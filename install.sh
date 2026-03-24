@@ -1,18 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 #######################################################
-#  📱 MOBILE HACKING LAB - Ultimate Installer v2.0
+#  📱 MOBILE LAB - Ultimate Installer v2.0
 #  
 #  Features:
 #  - Overall progress percentage
 #  - GPU acceleration auto-setup (Turnip/Zink)
-#  - All hacking tools pre-installed
 #  - One-click desktop launch
 #  
 #  Author: Tech Jarves
 #  YouTube: https://youtube.com/@TechJarves
 #######################################################
 # ============== CONFIGURATION ==============
-TOTAL_STEPS=13
+TOTAL_STEPS=10
 CURRENT_STEP=0
 # ============== COLORS ==============
 RED='\033[0;31m'
@@ -322,8 +321,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 exec startxfce4
 LAUNCHEREOF
-    chmod +x ~/start-hacklab.sh
-    echo -e "  ${GREEN}✓${NC} Created ~/start-hacklab.sh"
+    chmod +x ~/start-lab.sh
+    echo -e "  ${GREEN}✓${NC} Created ~/start-lab.sh"
     
     # Quick Tools Menu
     cat > ~/hacktools.sh << 'TOOLSEOF'
@@ -334,12 +333,8 @@ while true; do
     echo "╔═══════════════════════════════════════════╗"
     echo "║     🔧 Mobile HackLab - Quick Tools       ║"
     echo "╠═══════════════════════════════════════════╣"
-    echo "║  1) 🌐 Nmap - Network Scan                ║"
-    echo "║  2) 💉 SQLMap - SQL Injection             ║"
-    echo "║  3) 🔑 Hydra - Password Attack            ║"
-    echo "║  4) 💀 Metasploit Console                 ║"
-    echo "║  5) 🖥️  Start Desktop                     ║"
-    echo "║  6) 🔍 Check GPU Status                   ║"
+    echo "║  1) 🖥️ Start Desktop                      ║"
+    echo "║  2) 🔍 Check GPU Status                   ║"
     echo "║  0) ❌ Exit                               ║"
     echo "╚═══════════════════════════════════════════╝"
     echo ""
@@ -347,26 +342,9 @@ while true; do
     
     case $choice in
         1) 
-            read -p "  Enter target IP/hostname: " target
-            nmap -sV $target
-            read -p "Press Enter to continue..."
+            bash ~/start-lab.sh
             ;;
-        2) 
-            read -p "  Enter vulnerable URL: " url
-            sqlmap -u "$url" --batch
-            read -p "Press Enter to continue..."
-            ;;
-        3) 
-            echo "  Example: hydra -l admin -P wordlist.txt 192.168.1.1 ssh"
-            read -p "Press Enter to continue..."
-            ;;
-        4) 
-            msfconsole
-            ;;
-        5) 
-            bash ~/start-hacklab.sh
-            ;;
-        6)
+        2)
             echo ""
             glxinfo | grep "renderer"
             echo ""
@@ -378,21 +356,21 @@ while true; do
     esac
 done
 TOOLSEOF
-    chmod +x ~/hacktools.sh
-    echo -e "  ${GREEN}✓${NC} Created ~/hacktools.sh"
+    chmod +x ~/tools.sh
+    echo -e "  ${GREEN}✓${NC} Created ~/tools.sh"
     
     # Desktop Shutdown Script
-    cat > ~/stop-hacklab.sh << 'STOPEOF'
+    cat > ~/stop-lab.sh << 'STOPEOF'
 #!/data/data/com.termux/files/usr/bin/bash
-echo "Stopping Mobile HackLab..."
+echo "Stopping Mobile Lab..."
 pkill -9 -f "termux.x11" 2>/dev/null
 pkill -9 -f "pulseaudio" 2>/dev/null
 pkill -9 -f "xfce" 2>/dev/null
 pkill -9 -f "dbus" 2>/dev/null
 echo "Desktop stopped."
 STOPEOF
-    chmod +x ~/stop-hacklab.sh
-    echo -e "  ${GREEN}✓${NC} Created ~/stop-hacklab.sh"
+    chmod +x ~/stop-lab.sh
+    echo -e "  ${GREEN}✓${NC} Created ~/stop-lab.sh"
 }
 # ============== STEP 13: CREATE DESKTOP SHORTCUTS ==============
 step_shortcuts() {
@@ -435,23 +413,12 @@ Type=Application
 Categories=System;TerminalEmulator;
 EOF
     
-    # Metasploit
-    cat > ~/Desktop/Metasploit.desktop << 'EOF'
+    # Tools Menu
+    cat > ~/Desktop/Tools.desktop << 'EOF'
 [Desktop Entry]
-Name=Metasploit
-Comment=Exploitation Framework
-Exec=xfce4-terminal -e msfconsole
-Icon=utilities-terminal
-Type=Application
-Categories=Security;
-EOF
-    
-    # HackTools Menu
-    cat > ~/Desktop/HackTools.desktop << 'EOF'
-[Desktop Entry]
-Name=HackTools Menu
+Name=Tools Menu
 Comment=Quick Security Tools
-Exec=xfce4-terminal -e "bash ~/hacktools.sh"
+Exec=xfce4-terminal -e "bash ~/tools.sh"
 Icon=security-high
 Type=Application
 Categories=Security;
@@ -502,20 +469,17 @@ COMPLETE
     echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo ""
     echo -e "${WHITE}🚀 TO START THE DESKTOP:${NC}"
-    echo -e "   ${GREEN}bash ~/start-hacklab.sh${NC}"
+    echo -e "   ${GREEN}bash ~/start-lab.sh${NC}"
     echo ""
     echo -e "${WHITE}🔧 FOR QUICK TOOLS MENU:${NC}"
-    echo -e "   ${GREEN}bash ~/hacktools.sh${NC}"
+    echo -e "   ${GREEN}bash ~/tools.sh${NC}"
     echo ""
     echo -e "${WHITE}🛑 TO STOP THE DESKTOP:${NC}"
-    echo -e "   ${GREEN}bash ~/stop-hacklab.sh${NC}"
+    echo -e "   ${GREEN}bash ~/stop-lab.sh${NC}"
     echo ""
     echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo ""
     echo -e "${CYAN}📦 INSTALLED TOOLS:${NC}"
-    echo -e "   • Nmap, Netcat, DNS tools"
-    echo -e "   • SQLMap, Hydra, John the Ripper"
-    echo -e "   • Metasploit Framework"
     echo -e "   • Firefox, VS Code, Git"
     echo -e "   • Windows Compatibility (Wine/Hangover)"
     echo -e "   • XFCE4 Desktop + GPU Acceleration"
@@ -525,7 +489,7 @@ COMPLETE
     echo -e "${CYAN}  🎬 Tutorial:  [YOUR VIDEO URL]${NC}"
     echo -e "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo ""
-    echo -e "${WHITE}⚡ TIP: Open Termux-X11 app first, then run start-hacklab.sh${NC}"
+    echo -e "${WHITE}⚡ TIP: Open Termux-X11 app first, then run start-lab.sh${NC}"
     echo ""
 }
 # ============== MAIN INSTALLATION ==============
@@ -549,9 +513,6 @@ main() {
     step_gpu
     step_audio
     step_apps
-    step_network_tools
-    step_security_tools
-    step_metasploit
     step_wine
     step_launchers
     step_shortcuts
