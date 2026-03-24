@@ -82,6 +82,7 @@ After installation, use these commands:
 | Command | What it does |
 |---------|--------------|
 | `bash ~/start-lab.sh` | 🖥️ Start the desktop |
+| `bash ~/tools.sh` | 🔧 Quick tools menu |
 | `bash ~/stop-lab.sh` | 🛑 Stop the desktop |
 ---
 ## 📋 Requirements
