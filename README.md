@@ -1,6 +1,6 @@
-# 📱 Mobile HackLab
+# 📱 Mobile Lab fork from jarvesusaram99 -> termux-hacklab
 ### Run Linux Desktop with GPU Acceleration on Android (No Root!)
-> Turn your Android phone into a powerful hacking machine with one command!
+> Turn your Android phone into a powerful machine with one command!
 > 
 ![GPU](https://img.shields.io/badge/GPU-Accelerated-orange?style=for-the-badge)
 ![Root](https://img.shields.io/badge/Root-Not%20Required-brightgreen?style=for-the-badge)
@@ -21,7 +21,6 @@ wget -O - https://raw.githubusercontent.com/Gera-Garza/termux-lab/main/install.s
 | 🖥️ **Full Linux Desktop** | XFCE4 with Termux-X11 |
 | 🎮 **GPU Acceleration** | Turnip/Zink drivers for smooth 60fps |
 | 🔓 **No Root Required** | Works on ANY Android phone! |
-| 🔧 **100+ Hacking Tools** | Nmap, Metasploit, SQLMap, Hydra |
 | 🪟 **Windows Support** | Run `.exe` apps with Wine/Hangover |
 | ⌨️ **Bluetooth Support** | Keyboard & mouse work perfectly |
 | 📊 **Progress Bar** | See installation progress in real-time |
@@ -46,13 +45,6 @@ Unlike other guides that use **slow software rendering**, this installer sets up
 - Thunar File Manager
 - Firefox Browser
 - VS Code Editor
-### 🔧 Hacking Tools
-| Category | Tools |
-|----------|-------|
-| **Network** | Nmap, Netcat, Whois, DNS tools |
-| **Web** | SQLMap, Nikto |
-| **Password** | Hydra, John the Ripper |
-| **Exploitation** | Metasploit Framework |
 ### 🪟 Windows Support
 - Wine Compatibility Layer
 - Hangover (WowBox64)
@@ -68,6 +60,7 @@ Unlike other guides that use **slow software rendering**, this installer sets up
 ---
 ## 📸 Installation Preview
 ```
+Real author:
 ╔══════════════════════════════════════╗
 ║                                      ║
 ║   🚀  MOBILE HACKLAB v2.1  🚀        ║
@@ -88,9 +81,8 @@ Unlike other guides that use **slow software rendering**, this installer sets up
 After installation, use these commands:
 | Command | What it does |
 |---------|--------------|
-| `bash ~/start-hacklab.sh` | 🖥️ Start the desktop |
-| `bash ~/hacktools.sh` | 🔧 Quick tools menu |
-| `bash ~/stop-hacklab.sh` | 🛑 Stop the desktop |
+| `bash ~/start-lab.sh` | 🖥️ Start the desktop |
+| `bash ~/stop-lab.sh` | 🛑 Stop the desktop |
 ---
 ## 📋 Requirements
 | Requirement | Details |
@@ -122,7 +114,7 @@ Pull requests welcome! Feel free to:
 - 💡 Suggest features
 - 🔧 Add new tools
 ---
-## 📺 Connect With Me
+## 📺 Connect With the author.
 | Platform | Link |
 |----------|------|
 | **YouTube** | [@TechJarves](https://youtube.com/@TechJarves) |
