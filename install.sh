@@ -264,8 +264,8 @@ step_launchers() {
     
     # GPU Configuration file
     mkdir -p ~/.config
-    cat > ~/.config/hacklab-gpu.sh << 'GPUEOF'
-# Mobile HackLab - GPU Acceleration Config
+    cat > ~/.config/lab-gpu.sh << 'GPUEOF'
+# Mobile Lab - GPU Acceleration Config
 export MESA_NO_ERROR=1
 export MESA_GL_VERSION_OVERRIDE=4.6
 export MESA_GLES_VERSION_OVERRIDE=3.2
@@ -278,18 +278,18 @@ GPUEOF
     echo -e "  ${GREEN}✓${NC} GPU config created"
     
     # Add to bashrc
-    if ! grep -q "hacklab-gpu.sh" ~/.bashrc 2>/dev/null; then
-        echo 'source ~/.config/hacklab-gpu.sh 2>/dev/null' >> ~/.bashrc
+    if ! grep -q "lab-gpu.sh" ~/.bashrc 2>/dev/null; then
+        echo 'source ~/.config/lab-gpu.sh 2>/dev/null' >> ~/.bashrc
     fi
     
     # Main Desktop Launcher - AUDIO FIXED
-    cat > ~/start-hacklab.sh << 'LAUNCHEREOF'
+    cat > ~/start-lab.sh << 'LAUNCHEREOF'
 #!/data/data/com.termux/files/usr/bin/bash
 echo ""
-echo "🚀 Starting Mobile HackLab Desktop..."
+echo "🚀 Starting Mobile Lab Desktop..."
 echo ""
 # Load GPU config
-source ~/.config/hacklab-gpu.sh 2>/dev/null
+source ~/.config/lab-gpu.sh 2>/dev/null
 # Kill any existing sessions
 echo "🔄 Cleaning up old sessions..."
 pkill -9 -f "termux.x11" 2>/dev/null
@@ -331,7 +331,7 @@ while true; do
     clear
     echo ""
     echo "╔═══════════════════════════════════════════╗"
-    echo "║     🔧 Mobile HackLab - Quick Tools       ║"
+    echo "║     🔧 Mobile Lab - Quick Tools       ║"
     echo "╠═══════════════════════════════════════════╣"
     echo "║  1) 🖥️ Start Desktop                      ║"
     echo "║  2) 🔍 Check GPU Status                   ║"
